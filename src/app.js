@@ -11,7 +11,7 @@ const app = express()
 
 app.use(morgan(REQUEST_LOGGER_FORMAT))
 app.use(helmet())
-app.use(router)
+app.use('/', router)
 app.use(httpErrorHandler)
 
 module.exports = app
