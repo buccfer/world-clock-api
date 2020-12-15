@@ -1,13 +1,12 @@
 'use strict'
 
 const { Router } = require('express')
-const { find } = require('./handlers')
+const { find, get } = require('./handlers')
 
 const router = Router()
 
 router.get('/', find)
-
-router.get('/:name')
+router.get('/:name(*)', get)
 
 router.put('/:name')
 
