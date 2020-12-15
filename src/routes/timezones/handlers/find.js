@@ -1,22 +1,14 @@
 'use strict'
 
-const superagent = require('superagent')
-const map = require('lodash/map')
-const moment = require('moment-timezone')
-const { TIMEZONES_API_URL } = require('../../../config')
+const tz = require('../../../lib/timezone')
 
 module.exports = async function find(req, res, next) {
   try {
-    const { body: timezones } = await superagent.get(TIMEZONES_API_URL)
+    const now = Date.now()
+    const timezones = await tz.getTimezones()
 
     res.json({
-      timezones: map(
-        timezones,
-        (tz) => ({
-          name: tz,
-          localTime: moment.tz(tz).format('DD/MM/yyyy h:mma')
-        })
-      ),
+      timezones: timezones.map((timezone) => tz.buildTimezone(now, timezone)),
       total: timezones.length
     })
   } catch (err) {
