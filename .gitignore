@@ -1,0 +1,21 @@
+# Package directories
+node_modules/
+
+# IDE files
+.idea/
+
+# Logs
+*.log
+
+# Environment files
+.env
+
+# Coverage
+.nyc_output/
+coverage/
+
+# Temp files
+.tmp/
+
+# ESLint cache file
+.eslintcache
