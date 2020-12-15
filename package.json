@@ -5,6 +5,7 @@
   "main": "server.js",
   "private": true,
   "scripts": {
+    "lint": "eslint --cache --format compact .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Fernando Buccella",
@@ -15,6 +16,7 @@
   "devDependencies": {
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-plugin-import": "^2.22.1"
+    "eslint-plugin-import": "^2.22.1",
+    "husky": "^4.3.6"
   }
 }
