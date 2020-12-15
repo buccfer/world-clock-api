@@ -2,12 +2,11 @@
 
 const superagent = require('superagent')
 const map = require('lodash/map')
-const { utcToZonedTime, format } = require('date-fns-tz')
+const moment = require('moment-timezone')
 const { TIMEZONES_API_URL } = require('../../../config')
 
 module.exports = async function find(req, res, next) {
   try {
-    const now = Date.now()
     const { body: timezones } = await superagent.get(TIMEZONES_API_URL)
 
     res.json({
@@ -15,7 +14,7 @@ module.exports = async function find(req, res, next) {
         timezones,
         (tz) => ({
           name: tz,
-          localTime: format(utcToZonedTime(now, tz), 'dd/MM/yyyy h:mma')
+          localTime: moment.tz(tz).format('DD/MM/yyyy h:mma')
         })
       ),
       total: timezones.length
