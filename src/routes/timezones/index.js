@@ -9,7 +9,6 @@ const router = Router()
 router.get('/', find)
 router.get('/:name(*)', checkTimezoneExists, get)
 router.put('/:name(*)', checkTimezoneExists, put)
-
 router.delete('/:name')
 
 module.exports = router
