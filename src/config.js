@@ -13,7 +13,7 @@ const {
 
 module.exports = {
   NODE_ENV: defaultTo(NODE_ENV, 'development'),
-  PORT: defaultTo(parseInt(PORT), 3000),
+  PORT: defaultTo(parseInt(PORT), 5000),
   LOG_LEVEL: defaultTo(LOG_LEVEL, 'info'),
   REQUEST_LOGGER_FORMAT: defaultTo(REQUEST_LOGGER_FORMAT, 'dev'),
   TIMEZONES_API_URL: defaultTo(TIMEZONES_API_URL, 'http://worldtimeapi.org/api/timezone')
