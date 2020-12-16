@@ -5,6 +5,7 @@ const moment = require('moment-timezone')
 const { TIMEZONES_API_URL } = require('../config')
 
 async function getTimezones() {
+  // A cache layer can be added here to speed things up.
   const { body: timezones } = await superagent.get(TIMEZONES_API_URL)
   return timezones
 }
