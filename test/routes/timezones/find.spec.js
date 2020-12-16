@@ -1,15 +1,13 @@
 'use strict'
 
 const { URL } = require('url')
-const { expect, httpStatus, nock, request, chance, moment, mockDate } = require('../../index')
-const app = require('../../../src/app')
-const { TIMEZONES_API_URL } = require('../../../src/config')
+const { expect, httpStatus, nock, request, chance, moment, mockDate, app, config } = require('../../index')
 
 const path = '/timezones'
 
 describe(`GET ${path}`, () => {
   const now = new Date()
-  const { origin: timezonesBaseUrl, pathname: timezonesPath } = new URL(TIMEZONES_API_URL)
+  const { origin: timezonesBaseUrl, pathname: timezonesPath } = new URL(config.TIMEZONES_API_URL)
 
   before(() => {
     if (!nock.isActive()) {

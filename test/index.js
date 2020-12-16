@@ -7,6 +7,8 @@ const request = require('supertest')
 const chance = require('chance').Chance()
 const moment = require('moment-timezone')
 const mockDate = require('mockdate')
+const app = require('../src/app')
+const config = require('../src/config')
 
 module.exports = {
   expect: chai.expect,
@@ -15,5 +17,7 @@ module.exports = {
   request,
   chance,
   moment,
-  mockDate
+  mockDate,
+  app,
+  config
 }
