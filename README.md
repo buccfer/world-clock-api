@@ -12,3 +12,8 @@
 2. Install project dependencies: `npm install`
 3. Create the `.env` file and adjust it to match your needs: `cp .env.sample .env`
 4. Start the server with docker: `docker-compose up`
+
+### Running tests
+
+- With Docker Compose: `docker-compose run api npm test`
+- Without Docker Compose: `npm test`
