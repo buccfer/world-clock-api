@@ -68,5 +68,15 @@ describe(`GET ${path}`, () => {
     )
 
     expect(scope.isDone()).to.be.true
+
+    // Check the second time the request is cached.
+    const secondScope = nock(timezonesBaseUrl)
+      .get(timezonesPath)
+      .reply(httpStatus.SERVICE_UNAVAILABLE, { error: chance.sentence() })
+
+    const res = await request(app).get(path)
+    expect(res.status).to.equal(httpStatus.OK)
+    expect(res.body).to.deep.equal(body)
+    expect(secondScope.isDone()).to.be.false
   })
 })
