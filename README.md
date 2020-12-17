@@ -16,4 +16,3 @@
 ### Running tests
 
 - With Docker Compose: `docker-compose run api npm test`
-- Without Docker Compose: `npm test`

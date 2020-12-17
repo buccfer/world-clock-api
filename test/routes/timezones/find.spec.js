@@ -2,6 +2,7 @@
 
 const { URL } = require('url')
 const { expect, httpStatus, nock, request, chance, moment, mockDate, app, config } = require('../../index')
+const redis = require('../../../src/lib/redis')
 
 const path = '/timezones'
 
@@ -17,7 +18,8 @@ describe(`GET ${path}`, () => {
     mockDate.set(now)
   })
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    await redis.flushallAsync()
     nock.cleanAll()
   })
 

@@ -2,6 +2,7 @@
 
 const { URL } = require('url')
 const { expect, httpStatus, nock, request, chance, moment, mockDate, app, config } = require('../../index')
+const redis = require('../../../src/lib/redis')
 
 describe('GET /timezones/:name', () => {
   const { origin: timezonesBaseUrl, pathname: timezonesPath } = new URL(config.TIMEZONES_API_URL)
@@ -14,7 +15,8 @@ describe('GET /timezones/:name', () => {
     mockDate.set(new Date())
   })
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    await redis.flushallAsync()
     nock.cleanAll()
   })
 

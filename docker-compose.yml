@@ -9,3 +9,7 @@ services:
       - ./:/app
     ports:
       - ${PORT}:${PORT}
+    depends_on:
+      - redis
+  redis:
+    image: redis:alpine
